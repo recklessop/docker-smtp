@@ -1,0 +1,12 @@
+version: "3.3"
+services:
+  mail:
+    image: recklessop/docker-smtp:bookworm-lite
+    restart: always
+    environment:
+      MAILNAME: relay.x.com
+      RELAY_HOST: x
+      RELAY_PORT: 25
+      RELAY_USERNAME: x
+      RELAY_PASSWORD: x
+      RELAY_NETS: 10.0.0.0/8;172.16.0.0/12;192.168.0.0/16

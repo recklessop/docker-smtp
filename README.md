@@ -1,6 +1,6 @@
 ## Supported tags
 
-* [`stretch`, `latest` (*stretch/Dockerfile*)](https://github.com/BytemarkHosting/docker-smtp/blob/master/stretch/Dockerfile)
+* [`bookworm`, `latest` (*bookworm/Dockerfile*)](https://github.com/recklessop/docker-smtp/blob/master/bookworm/Dockerfile)
 
 ## Quick reference
 
@@ -9,13 +9,13 @@ it to send email directly to recipients, or to act as a smart host that relays
 mail to an intermediate server (eg, GMail, SendGrid).
 
 * **Code repository:**
-  https://github.com/BytemarkHosting/docker-smtp
+  https://github.com/recklessop/docker-smtp
 * **Where to file issues:**
-  https://github.com/BytemarkHosting/docker-smtp/issues
+  https://github.com/recklessop/docker-smtp/issues
 * **Maintained by:**
-  [Bytemark Hosting](https://www.bytemark.co.uk)
+  [Recklessop](https://www.jpaul.me)
 * **Supported architectures:**
-  [Any architecture that has the Debian `exim4-daemon-light` package](https://packages.debian.org/stretch/exim4-daemon-light)
+  [Any architecture that has the Debian `exim4-daemon-light` package](https://packages.debian.org/bookworm/exim4-daemon-light)
 
 ## Usage
 
@@ -25,20 +25,13 @@ In this example, linked containers can connect to hostname `mail` and port `25`
 to send outgoing email. The SMTP container sends email out directly.
 
 ```
-docker run --restart always --name mail -d bytemark/smtp
+docker run --restart always --name mail -d recklessop/docker-smtp
 
 ```
 
 #### Via Docker Compose:
 
-```
-version: '3'
-services:
-  mail:
-    image: bytemark/smtp
-    restart: always
-
-```
+use docker-compose.yaml file in repo
 
 ### SMTP smart host
 
@@ -52,7 +45,7 @@ docker run --restart always --name mail \
     -e RELAY_PORT=587 \
     -e RELAY_USERNAME=alice@example.com \
     -e RELAY_PASSWORD=secretpassword \
-    -d bytemark/smtp
+    -d recklessop/docker-smtp
 
 ```
 
@@ -62,7 +55,7 @@ docker run --restart always --name mail \
 version: '3'
 services:
   mail:
-    image: bytemark/smtp
+    image: recklessop/docker-smtp
     restart: always
     environment:
       RELAY_HOST: smtp.example.com
